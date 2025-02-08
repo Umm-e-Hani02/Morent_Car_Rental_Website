@@ -101,22 +101,6 @@ export default function Checkout() {
     }
   };
 
-  const [totalPrice, setTotalPrice] = useState<number>(0);
-
-  useEffect(() => {
-    const bookedCars = getBookingCar();
-    console.log("Booked Cars:", bookedCars);
-
-    setBookingItems(bookedCars);
-
-    const total = bookedCars.reduce((acc, car) => {
-      const price = Number(car.pricePerDay);
-      return acc + (isNaN(price) ? 0 : price);
-    }, 0);
-
-    setTotalPrice(total);
-  }, []);
-
   useEffect(() => {
     const bookedCars = getBookingCar();
     console.log("Booked Cars:", JSON.stringify(bookedCars, null, 2));
@@ -378,7 +362,6 @@ export default function Checkout() {
 
           {/* Total Rental Price */}
           <div className="mt-5">
-            
             <p className="text-sm text-[#90A3BF]">
               Overall price and includes rental discount
             </p>
